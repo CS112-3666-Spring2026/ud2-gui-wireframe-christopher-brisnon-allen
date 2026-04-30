@@ -4,7 +4,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="activeShipPanel" prefHeight="490.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs112.ud2.controller.ActiveShipController">
+<VBox fx:id="activeShipPanel" prefHeight="490.0" prefWidth="200.0"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="cs112.ud2.controller.ActiveShipController">
    <children>
       <HBox fx:id="activeShipNameLabelHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -173,7 +176,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label fx:id="activeShipStatSpeedValue" text="Label" />
+                              <Label fx:id="activeShipStatSpeedValue" text="0" />
                            </children>
                         </VBox>
                      </children></HBox>
@@ -189,7 +192,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label text="Label" />
+                              <Label text="0" />
                            </children>
                         </VBox>
                      </children>
@@ -206,7 +209,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label text="Label" />
+                              <Label text="0" />
                            </children>
                         </VBox>
                      </children>
@@ -223,7 +226,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label text="Label" />
+                              <Label text="0" />
                            </children>
                         </VBox>
                      </children>
@@ -240,7 +243,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label text="Label" />
+                              <Label text="0" />
                            </children>
                         </VBox>
                      </children>
