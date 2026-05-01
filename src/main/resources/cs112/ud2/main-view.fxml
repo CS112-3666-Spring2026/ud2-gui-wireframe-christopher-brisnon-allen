@@ -1,49 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="1080.0" maxWidth="1920.0" minHeight="-Infinity" minWidth="860.0" prefHeight="510.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="cs112.ud2.controller.MainController"
+            prefWidth="860"
+            prefHeight="510"
+            minWidth="860"
+            minHeight="510">
+
+   <!-- FAR LEFT: Fleet Icon List -->
    <left>
-      <AnchorPane fx:id="shipManagerWin" prefHeight="490.0" prefWidth="190.0" BorderPane.alignment="CENTER" />
+      <fx:include fx:id="fleetListView"
+                  source="fleet-list-view.fxml" />
    </left>
+
+   <!-- CENTER: Active Ship Panel + Main Content Area -->
    <center>
-      <BorderPane fx:id="mainWin" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <HBox spacing="0">
+         <!-- Active Ship Panel -->
+         <fx:include fx:id="activeShipView"
+                     source="active-ship-panel-view.fxml" />
+
+         <!-- Main Content Area (the big central white space) -->
+         <StackPane fx:id="mainContentArea"
+                    HBox.hgrow="ALWAYS" />
+      </HBox>
    </center>
+
+   <!-- BOTTOM: Resource Bar -->
    <bottom>
-      <HBox fx:id="resourceWin" maxHeight="20.0" maxWidth="860.0" minHeight="20.0" minWidth="860.0" prefHeight="20.0" prefWidth="860.0" BorderPane.alignment="CENTER">
-         <children>
-            <GridPane fx:id="resourceGrid" maxHeight="20.0" maxWidth="860.0" minHeight="20.0" minWidth="860.0" prefHeight="20.0" prefWidth="860.0">
-              <columnConstraints>
-                <ColumnConstraints halignment="LEFT" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label fx:id="creditLabel" text="Credit:" />
-                  <Label fx:id="energyLabel" text="Energy:" GridPane.columnIndex="1" />
-                  <Label fx:id="salvageLabel" text="Salvage:" GridPane.columnIndex="2" />
-                  <Label fx:id="mineralLabel" text="Minerals:" GridPane.columnIndex="3" />
-                  <Button fx:id="menuButton" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" GridPane.columnIndex="9" />
-                  <Button fx:id="playButton" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" GridPane.columnIndex="8" />
-                  <Button fx:id="storageButton" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" GridPane.columnIndex="6" />
-                  <Label fx:id="timeLabel" text="TIME" GridPane.columnIndex="7" />
-               </children>
-            </GridPane>
-         </children>
-         <BorderPane.margin>
-            <Insets bottom="2.0" />
-         </BorderPane.margin></HBox>
+      <fx:include fx:id="resourceView"
+                  source="resource-view.fxml" />
    </bottom>
+
 </BorderPane>

@@ -4,12 +4,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="activeShipPanel" prefHeight="490.0" prefWidth="200.0"
+<VBox fx:id="activeShipView"
+      maxHeight="490.0"
+      maxWidth="200.0"
+      minHeight="490.0"
+      minWidth="200.0"
+      prefHeight="490.0"
+      prefWidth="200.0"
       xmlns="http://javafx.com/javafx/17.0.12"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="cs112.ud2.controller.ActiveShipController">
    <children>
-      <HBox fx:id="activeShipNameLabelHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox fx:id="activeShipNameLabelHBox" alignment="CENTER" maxHeight="20.0" maxWidth="200.0" minHeight="20.0" minWidth="200.0" prefHeight="20.0" prefWidth="200.0">
          <children>
             <Label fx:id="activeShipNameLabel" text="ActiveShipName" />
          </children></HBox>
@@ -25,9 +31,7 @@
                            </opaqueInsets></ProgressBar>
                         <Label fx:id="hullValueLabel" text="HULLVALUE" />
                      </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets></VBox>
+                  </VBox>
                </children>
             </HBox>
             <HBox fx:id="shieldHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -151,18 +155,18 @@
                </children></VBox>
          </children>
       </HBox>
-      <VBox fx:id="activeShipStatPanel" maxHeight="560.0" maxWidth="320.0" minHeight="280.0" minWidth="160.0" prefHeight="280.0" prefWidth="160.0">
+      <VBox fx:id="activeShipStatPanel" alignment="TOP_CENTER" maxHeight="240.0" maxWidth="200.0" minHeight="200.0" minWidth="200.0" prefHeight="240.0" prefWidth="200.0">
          <children>
-            <HBox fx:id="activeShipLabelHBox" alignment="CENTER" maxHeight="40.0" maxWidth="320.0" minHeight="20.0" minWidth="160.0" prefHeight="20.0" prefWidth="160.0">
+            <HBox fx:id="activeShipLabelHBox" alignment="TOP_CENTER" maxHeight="40.0" maxWidth="320.0" minHeight="20.0" minWidth="160.0" prefHeight="20.0" prefWidth="160.0">
                <children>
                   <Label fx:id="activeShipStatLabel" text="ActiveShipStats" />
                </children>
             </HBox>
-            <VBox fx:id="activeShipStatContainer" maxHeight="520.0" maxWidth="320.0" minHeight="260.0" minWidth="160.0" prefHeight="260.0" prefWidth="160.0" spacing="6.0">
+            <VBox fx:id="activeShipStatContainer" alignment="TOP_CENTER" maxHeight="160.0" maxWidth="200.0" minHeight="160.0" minWidth="200.0" prefHeight="160.0" prefWidth="200.0" spacing="6.0">
                <children>
-                  <HBox fx:id="speedStatContainer" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                  <HBox fx:id="speedStatContainer" alignment="CENTER_LEFT" maxHeight="20.0" maxWidth="200.0" minHeight="20.0" minWidth="200.0" prefHeight="20.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER_LEFT" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                            <children>
                               <Label fx:id="activeShipStatSpeedLabel" text="Speed: ">
                                  <opaqueInsets>
@@ -174,15 +178,18 @@
                               <Insets left="10.0" />
                            </padding>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER_RIGHT" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                            <children>
                               <Label fx:id="activeShipStatSpeedValue" text="0" />
                            </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
                         </VBox>
                      </children></HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                  <HBox alignment="CENTER_LEFT" maxHeight="20.0" maxWidth="200.0" minHeight="20.0" minWidth="200.0" prefHeight="20.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER_LEFT" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                            <children>
                               <Label fx:id="activeShipStatCombatPowerLabel" text="Combat Power:" />
                            </children>
@@ -190,16 +197,19 @@
                               <Insets left="10.0" />
                            </padding>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER_RIGHT" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                            <children>
                               <Label text="0" />
                            </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                  <HBox alignment="CENTER_LEFT" maxHeight="20.0" maxWidth="200.0" minHeight="20.0" minWidth="200.0" prefHeight="20.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER_LEFT" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                            <children>
                               <Label fx:id="activeShipStatMiningPowerLabel" text="Mining Power:" />
                            </children>
@@ -207,16 +217,19 @@
                               <Insets left="10.0" />
                            </padding>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER_RIGHT" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                            <children>
                               <Label text="0" />
                            </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                  <HBox alignment="CENTER_LEFT" maxHeight="20.0" maxWidth="200.0" minHeight="20.0" minWidth="200.0" prefHeight="20.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER_LEFT" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                            <children>
                               <Label fx:id="activeShipStatSalvagePowerLabel" text="Salvage Power:" />
                            </children>
@@ -224,16 +237,19 @@
                               <Insets left="10.0" />
                            </padding>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER_RIGHT" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                            <children>
                               <Label text="0" />
                            </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                  <HBox alignment="CENTER_LEFT" maxHeight="20.0" maxWidth="200.0" minHeight="20.0" minWidth="200.0" prefHeight="20.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER_LEFT" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                            <children>
                               <Label fx:id="activeShipStatScoutPowerLabel" text="Scout Power:" />
                            </children>
@@ -241,10 +257,16 @@
                               <Insets left="10.0" />
                            </padding>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER_RIGHT" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                            <children>
                               <Label text="0" />
                            </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
                         </VBox>
                      </children>
                   </HBox>
