@@ -16,44 +16,38 @@
         <Insets top="30" bottom="30" left="30" right="30"/>
     </padding>
 
-    <Label text="Gameplay / Debug View"
-           styleClass="title-label" />
+    <Label text="Gameplay / Debug View" styleClass="title-label" />
 
     <HBox spacing="20">
         <!-- Left Column -->
         <VBox spacing="12">
             <Label text="Fleet Management" styleClass="section-label"/>
-            <Button fx:id="addWorkingShipBtn" text="Add Working Ship" prefWidth="180"/>
-            <Button fx:id="addFighterShipBtn" text="Add Fighter Ship" prefWidth="180"/>
-            <Button fx:id="removeSelectedShipBtn" text="Remove Selected Ship" prefWidth="180"/>
         </VBox>
 
         <!-- Right Column -->
         <VBox spacing="12">
             <Label text="Ship Actions" styleClass="section-label"/>
-            <Button fx:id="damageShipBtn" text="Damage Active Ship" prefWidth="180"/>
-            <Button fx:id="healShipBtn" text="Heal Active Ship" prefWidth="180"/>
         </VBox>
     </HBox>
 
     <HBox spacing="20">
         <VBox spacing="12">
             <Label text="Resources" styleClass="section-label"/>
-            <Button fx:id="addCreditBtn" text="+100 Credit" prefWidth="180"/>
-            <Button fx:id="addMineralsBtn" text="+100 Minerals" prefWidth="180"/>
-            <Button fx:id="addSalvageBtn" text="+100 Salvage" prefWidth="180"/>
-            <Button fx:id="addEnergyBtn" text="+100 Energy" prefWidth="180"/>
-
+            <Button text="+100 Minerals" onAction="#addMinerals" prefWidth="180"/>
+            <Button text="+100 Salvage" onAction="#addSalvage" prefWidth="180"/>
+            <Button text="+100 Energy" onAction="#addEnergy" prefWidth="180"/>
+            <Button text="+200 Credits" onAction="#addCredits" prefWidth="180"/>
         </VBox>
 
         <VBox spacing="12">
-            <Label text=" " styleClass="section-label"/> <!-- spacer -->
-            <Button fx:id="clearResourcesBtn" text="Clear All Resources" prefWidth="180"/>
+            <Label text=" " styleClass="section-label"/>
+            <Button text="-50 Minerals" onAction="#subtractMinerals" prefWidth="180"/>
+            <Button text="-50 Salvage" onAction="#subtractSalvage" prefWidth="180"/>
+            <Button text="-50 Energy" onAction="#subtractEnergy" prefWidth="180"/>
+            <Button text="-50 Credits" onAction="#subtractCredits" prefWidth="180"/>
         </VBox>
     </HBox>
 
     <Separator/>
-
-    <Button fx:id="printFleetBtn" text="Print Fleet to Console" prefWidth="200"/>
 
 </VBox>

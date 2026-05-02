@@ -6,7 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
+/*
+ * Fleet Commander is a game where you explore nodes, collect resources, and fight
+ * enemy ships!
+ *
+ * @author Christopher Brinson-Allen
+ * @collaborators Nadia Arani
+ * @version 05/01/2026
+ */
 public class MainApplication extends Application {
 
     @Override
