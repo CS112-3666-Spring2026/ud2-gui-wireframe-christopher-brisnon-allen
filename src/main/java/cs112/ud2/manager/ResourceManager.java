@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * ResourceManager.java
- * Manages all resources and fleet limits in the game.
+ * Manages all resources of the player, including minerals, salvage, energy, credits, and fleet capacity.
  */
 public class ResourceManager {
 
@@ -126,6 +126,7 @@ public class ResourceManager {
                 fleetCapacity == other.fleetCapacity;
     }
 
+    // hashCode and toString for better debugging and potential future use in collections
     @Override
     public int hashCode() {
         return Objects.hash(minerals, salvage, energy, credits, fleetCapacity);

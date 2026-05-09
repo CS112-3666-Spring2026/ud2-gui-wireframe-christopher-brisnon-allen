@@ -9,7 +9,7 @@ import java.util.Objects;
  *
  */
 public class Ship {
-
+    /********** CONSTANTS **********/
     // Main-related stats
     private String name;
     private int hull;
@@ -63,6 +63,19 @@ public class Ship {
         this.salvagePower = other.salvagePower;
         this.scoutPower = other.scoutPower;
         this.combatPower = other.combatPower;
+    }
+    /*
+     * Creates a random ship with a unique name and randomized stats.
+     */
+    public static Ship randomShip() {
+        String[] names = {"Alpha", "Beta", "Gamma", "Delta", "Epsilon"};
+        String name = names[(int) (Math.random() * names.length)] + " " + (int) (Math.random() * 1000);
+        int hull = 50 + (int) (Math.random() * 150);
+        int miningPower = (int) (Math.random() * 50);
+        int salvagePower = (int) (Math.random() * 50);
+        int scoutPower = (int) (Math.random() * 50);
+        int combatPower = (int) (Math.random() * 50);
+        return new Ship(name, hull, miningPower, salvagePower, scoutPower, combatPower);
     }
 
     /********** SETTERS **********/
@@ -124,7 +137,7 @@ public class Ship {
                 Objects.equals(name, other.name) &&
                 status == other.status;
     }
-
+    // hashCode and toString for better debugging and potential future use in collections
     @Override
     public int hashCode() {
         return Objects.hash(name, hull, status, miningPower,

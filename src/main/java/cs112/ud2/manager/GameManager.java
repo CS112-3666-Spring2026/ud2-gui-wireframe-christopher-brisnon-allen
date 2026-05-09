@@ -6,21 +6,19 @@ import cs112.ud2.model.Ship;
  * GameManager.java
  *    ─ Player
  *    ─ ResourceManager
- *    ─ Fleet logic
+ *    ─ Fleet adding removing logic
  * The main manager that controllers communicate with
  */
 public class GameManager {
 
+    /********** CONSTANTS **********/
     private static GameManager instance;
 
     private final Player player;
 
     private GameManager() {
         this.player = new Player("Commander");
-
-        // Starting ships for testing
-        player.addShip(new Ship("Alpha Miner", 150, 45, 30, 15,0));
-        player.addShip(new Ship("Beta Fighter", 200, 10, 10, 5, 50));
+        this.player.addRandomShip(); // Starting with random ship
     }
 
     public static GameManager getInstance() {
@@ -46,7 +44,14 @@ public class GameManager {
     public boolean addShip(Ship ship) {
         return player.addShip(ship);
     }
-    public boolean removeShip(Ship ship) { return player.removeShip(ship); }
+
+    public Ship addRandomShip() {
+        return player.addRandomShip();
+    }
+
+    public boolean removeShip(Ship ship) { 
+        return player.removeShip(ship); 
+    }
 
     /********** RESOURCES **********/
     public void addMinerals(int amount) { player.getResources().addMinerals(amount); }

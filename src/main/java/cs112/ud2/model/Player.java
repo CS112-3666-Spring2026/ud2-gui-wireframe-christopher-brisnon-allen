@@ -11,7 +11,7 @@ import cs112.ud2.manager.ResourceManager;
  * Owns the fleet of ships and resources.
  */
 public class Player {
-
+    /********** CONSTANTS **********/
     private String name;
     private int commandHull;           // The player's main command ship / base health
 
@@ -21,6 +21,7 @@ public class Player {
     private int experience;
     private int level;
 
+    /********** CONSTRUCTORS **********/
     public Player(String name) {
         this.name = name;
         this.commandHull = 1000;
@@ -63,6 +64,15 @@ public class Player {
         }
         ships.add(ship);
         return true;
+    }
+
+    public Ship addRandomShip() {
+        if (!canAddShip()) {
+            return null;
+        }
+        Ship randomShip = Ship.randomShip();
+        ships.add(randomShip);
+        return randomShip;
     }
 
     public boolean removeShip(Ship ship) {

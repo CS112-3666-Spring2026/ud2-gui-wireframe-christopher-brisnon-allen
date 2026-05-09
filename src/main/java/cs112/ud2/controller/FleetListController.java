@@ -7,7 +7,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import java.util.List;
-
+/**
+ * FleetListController.java
+ * Controls the list of ships in the fleet, handling selection and display.
+ */
 public class FleetListController {
 
     @FXML private Button shipInventoryButton00;
@@ -27,37 +30,78 @@ public class FleetListController {
     @FXML private Button shipInventoryButton14;
 
     private ActiveShipController activeShipController;
-    private Ship currentlySelectedShip = null;   // Track which ship is selected
+    private GameplayController gameplayController;
+    private Ship currentlySelectedShip = null;
+    private Button selectedButton = null;
+    private Button[] shipButtons;
 
     public void setActiveShipController(ActiveShipController controller) {
         this.activeShipController = controller;
     }
 
-    /**
-     * Updates the fleet list - shows only as many buttons as there are ships
-     */
+    public void setGameplayController(GameplayController controller) {
+        this.gameplayController = controller;
+    }
+
+    public void clearSelection() {
+        currentlySelectedShip = null;
+        selectedButton = null;
+        if (activeShipController != null) {
+            activeShipController.showNoSelection();
+        }
+    }
+
+    public void selectShip(Ship ship) {
+        if (ship == null || shipButtons == null) {
+            return;
+        }
+        // The newest ship is added to the end of the fleet, so select the last visible slot.
+        // Iterate backwards through the button array to find the last visible button
+        for (int i = shipButtons.length - 1; i >= 0; i--) {
+            Button button = shipButtons[i];
+            if (button != null && button.isVisible()) {
+                if (selectedButton != null) {
+                    selectedButton.setStyle("");
+                }
+                selectedButton = button;
+                currentlySelectedShip = ship;
+                button.setStyle("-fx-border-color: #00ff00; -fx-border-width: 2;");
+
+                if (activeShipController != null) {
+                    activeShipController.updateWithShip(ship);
+                }
+                if (gameplayController != null) {
+                    gameplayController.setCurrentlySelectedShip(ship);
+                }
+                return;
+            }
+        }
+    }
+
     public void setFleet(List<Ship> fleet) {
-        Button[] buttons = {
-                shipInventoryButton00, shipInventoryButton01, shipInventoryButton02,
+        shipButtons = new Button[] { shipInventoryButton00, shipInventoryButton01, shipInventoryButton02,
                 shipInventoryButton03, shipInventoryButton04, shipInventoryButton05,
                 shipInventoryButton06, shipInventoryButton07, shipInventoryButton08,
                 shipInventoryButton09, shipInventoryButton10, shipInventoryButton11,
-                shipInventoryButton12, shipInventoryButton13, shipInventoryButton14
-        };
+                shipInventoryButton12, shipInventoryButton13, shipInventoryButton14 };
 
-        // Hide all buttons first
-        for (Button btn : buttons) {
+        // Reset all buttons
+        for (Button btn : shipButtons) {
             btn.setVisible(false);
             btn.setGraphic(null);
             btn.setOnMouseClicked(null);
+            btn.setStyle(""); // Clear any styling
         }
 
-        // Populate only the buttons we need
-        for (int i = 0; i < fleet.size() && i < buttons.length; i++) {
-            Ship ship = fleet.get(i);
-            Button button = buttons[i];
+        // Clear selection when refreshing fleet
+        currentlySelectedShip = null;
+        selectedButton = null;
 
-            // Create placeholder icon
+        // Populate buttons
+        for (int i = 0; i < fleet.size() && i < shipButtons.length; i++) {
+            Ship ship = fleet.get(i);
+            Button button = shipButtons[i];
+
             ImageView icon = new ImageView();
             icon.setFitWidth(26);
             icon.setFitHeight(26);
@@ -66,18 +110,30 @@ public class FleetListController {
             button.setGraphic(icon);
             button.setVisible(true);
 
-            // Click handler with toggle logic
             final Ship currentShip = ship;
+            //logic for clicking on ship button and closing the active ship panel if the same ship is clicked again
             button.setOnMouseClicked((MouseEvent e) -> {
                 if (activeShipController != null) {
-                    if (currentlySelectedShip == currentShip) {
-                        // Clicked the same ship again → hide panel
-                        activeShipController.hidePanel();
+                    if (selectedButton == button) {
+                        // Toggle off - clicking the same button again
+                        activeShipController.showNoSelection();
+                        if (gameplayController != null) {
+                            gameplayController.setCurrentlySelectedShip(null);
+                        }
                         currentlySelectedShip = null;
+                        selectedButton.setStyle(""); // Clear selection styling
+                        selectedButton = null;
                     } else {
-                        // New ship selected → show/update panel
+                        // Clear previous selection styling
+                        if (selectedButton != null) {
+                            selectedButton.setStyle("");
+                        }
+                        
+                        // Show new ship
                         activeShipController.updateWithShip(currentShip);
                         currentlySelectedShip = currentShip;
+                        selectedButton = button;
+                        button.setStyle("-fx-border-color: #00ff00; -fx-border-width: 2;"); // Highlight selected
                     }
                 }
             });

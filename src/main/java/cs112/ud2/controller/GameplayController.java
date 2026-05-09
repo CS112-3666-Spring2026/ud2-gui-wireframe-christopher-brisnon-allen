@@ -5,13 +5,15 @@ import cs112.ud2.model.Ship;
 import javafx.fxml.FXML;
 /**
  * GamePlayController.java
- * Controls game state directly, currently debug test view primarily.
+ * Controls game state directly, currently debug test view primarily
+ * Basically testing for game logic and UI integration.
  */
 public class GameplayController {
 
     private GameManager gameManager;
     private ResourceController resourceController;
     private FleetListController fleetListController;
+    private ActiveShipController activeShipController;
     private Ship currentlySelectedShip;
 
     public void setGameManager(GameManager gameManager) {
@@ -24,6 +26,10 @@ public class GameplayController {
 
     public void setFleetListController(FleetListController fleetListController) {
         this.fleetListController = fleetListController;
+    }
+
+    public void setActiveShipController(ActiveShipController activeShipController) {
+        this.activeShipController = activeShipController;
     }
 
     public void setCurrentlySelectedShip(Ship ship) {
@@ -113,13 +119,13 @@ public class GameplayController {
     @FXML
     public void addShip() {
         if (gameManager != null && gameManager.canAddShip()) {
-            Ship newShip = new Ship(
-                    "Ship " + (gameManager.getPlayer().getShips().size() + 1),
-                    130, 45, 25, 20, 15
-            );
+            Ship newShip = Ship.randomShip();
             gameManager.addShip(newShip);
             System.out.println("Added new ship");
             refreshAll();
+            if (fleetListController != null) {
+                fleetListController.selectShip(newShip);
+            }
         } else {
             System.out.println("Cannot add ship - Fleet is full");
         }
@@ -127,14 +133,23 @@ public class GameplayController {
     @FXML
     public void removeSelectedShip() {
         if (gameManager != null && currentlySelectedShip != null) {
-            boolean removed = gameManager.removeShip(currentlySelectedShip);
-
-            if (removed) {
-                System.out.println("Removed ship: " + currentlySelectedShip.getName());
+            String shipName = currentlySelectedShip.getName();
+            
+            if (gameManager.removeShip(currentlySelectedShip)) {
+                System.out.println("Removed ship: " + shipName);
                 currentlySelectedShip = null;
-                refreshAll();
-            } else {
-                System.out.println("Failed to remove ship");
+                
+                // Clear selection from the fleet list view
+                if (fleetListController != null) {
+                    fleetListController.clearSelection();
+                }
+                
+                // Hide the panel
+                if (activeShipController != null) {
+                    activeShipController.hideActiveShipPanel();
+                }
+                
+                refreshFleet(); // Only refresh the fleet, not resources
             }
         } else {
             System.out.println("No ship selected to remove");

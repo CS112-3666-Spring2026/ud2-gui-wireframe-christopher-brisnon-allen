@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
  * Controls the live resource bar
  */
 public class ResourceController {
-
+    /********** CONSTANTS **********/
     @FXML
     private Label creditValueLabel;
     @FXML
@@ -22,6 +22,7 @@ public class ResourceController {
 
     private GameManager gameManager;
 
+    // Setters for updating resources from GameplayController or other controllers when needed
     public void setGameManager(GameManager gameManager) {
         this.gameManager = gameManager;
         updateAllResources();        // Initial update
