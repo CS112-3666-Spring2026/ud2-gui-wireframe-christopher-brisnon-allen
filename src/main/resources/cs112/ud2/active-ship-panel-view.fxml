@@ -4,16 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="activeShipView"
-      maxHeight="490.0"
-      maxWidth="200.0"
-      minHeight="490.0"
-      minWidth="200.0"
-      prefHeight="490.0"
-      prefWidth="200.0"
-      xmlns="http://javafx.com/javafx/17.0.12"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="cs112.ud2.controller.ActiveShipController">
+<VBox fx:id="activeShipView" maxHeight="490.0" maxWidth="200.0" minHeight="490.0" minWidth="200.0" prefHeight="490.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs112.ud2.controller.ActiveShipController">
    <children>
       <HBox fx:id="activeShipNameLabelHBox" alignment="CENTER" maxHeight="20.0" maxWidth="200.0" minHeight="20.0" minWidth="200.0" prefHeight="20.0" prefWidth="200.0">
          <children>
@@ -87,9 +78,9 @@
       </VBox>
       <HBox fx:id="equipmentPanel" alignment="CENTER">
          <children>
-            <VBox fx:id="equipmentSlotPanel" alignment="CENTER" maxHeight="160.0" maxWidth="100.0" minHeight="160.0" minWidth="100.0" prefHeight="160.0" prefWidth="100.0" HBox.hgrow="NEVER">
+            <VBox fx:id="equipmentSlotPanel" alignment="CENTER" maxHeight="160.0" maxWidth="100.0" minHeight="160.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" HBox.hgrow="NEVER">
                <children>
-                  <GridPane fx:id="equipGrid" alignment="CENTER" hgap="5.0" maxHeight="160.0" maxWidth="100.0" minHeight="160.0" minWidth="100.0" prefHeight="160.0" prefWidth="100.0" vgap="5.0" VBox.vgrow="NEVER">
+                  <GridPane fx:id="equipGrid" alignment="CENTER" hgap="120.0" maxHeight="160.0" maxWidth="100.0" minHeight="160.0" minWidth="200.0" prefHeight="160.0" prefWidth="100.0" vgap="5.0" VBox.vgrow="NEVER">
                     <columnConstraints>
                       <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
                         <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
@@ -116,43 +107,6 @@
                   </GridPane>
                </children>
             </VBox>
-            <VBox fx:id="crewPanelVBox" alignment="CENTER" maxHeight="160.0" maxWidth="100.0" minHeight="160.0" minWidth="100.0" prefHeight="160.0" prefWidth="100.0" HBox.hgrow="NEVER">
-               <children>
-                  <GridPane fx:id="crewGrid" alignment="CENTER" hgap="5.0" maxHeight="160.0" maxWidth="100.0" minHeight="160.0" minWidth="100.0" prefHeight="160.0" prefWidth="100.0" vgap="5.0" VBox.vgrow="NEVER">
-                    <columnConstraints>
-                      <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
-                      <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
-                        <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints valignment="CENTER" vgrow="NEVER" />
-                      <RowConstraints valignment="CENTER" vgrow="NEVER" />
-                      <RowConstraints valignment="CENTER" vgrow="NEVER" />
-                        <RowConstraints valignment="CENTER" vgrow="NEVER" />
-                        <RowConstraints valignment="CENTER" vgrow="NEVER" />
-                    </rowConstraints>
-                     <children>
-                        <Button fx:id="crewSlot0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
-                        <Button fx:id="crewSlot1" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="1" />
-                        <Button fx:id="crewSlot2" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="2" />
-                        <Button fx:id="crewSlot3" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.rowIndex="1" />
-                        <Button fx:id="crewSlot4" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button fx:id="crewSlot5" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Button fx:id="crewSlot6" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.rowIndex="2" />
-                        <Button fx:id="crewSlot7" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Button fx:id="crewSlot8" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <Button fx:id="crewSlot9" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.rowIndex="3" />
-                        <Button fx:id="crewSlot10" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Button fx:id="crewSlot11" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <Button maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.rowIndex="4" />
-                        <Button maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Button maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                     </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </GridPane>
-               </children></VBox>
          </children>
       </HBox>
       <VBox fx:id="activeShipStatPanel" alignment="TOP_CENTER" maxHeight="240.0" maxWidth="200.0" minHeight="200.0" minWidth="200.0" prefHeight="240.0" prefWidth="200.0">
@@ -199,7 +153,7 @@
                         </VBox>
                         <VBox alignment="CENTER_RIGHT" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                            <children>
-                              <Label text="0" />
+                              <Label fx:id="activeShipStatCombatPowerValue" text="0" />
                            </children>
                            <padding>
                               <Insets right="10.0" />
@@ -219,7 +173,7 @@
                         </VBox>
                         <VBox alignment="CENTER_RIGHT" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                            <children>
-                              <Label text="0" />
+                              <Label fx:id="activeShipStatMiningPowerValue" text="0" />
                            </children>
                            <padding>
                               <Insets right="10.0" />
@@ -239,7 +193,7 @@
                         </VBox>
                         <VBox alignment="CENTER_RIGHT" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                            <children>
-                              <Label text="0" />
+                              <Label fx:id="activeShipStatSalvagePowerValue" text="0" />
                            </children>
                            <padding>
                               <Insets right="10.0" />
@@ -259,7 +213,7 @@
                         </VBox>
                         <VBox alignment="CENTER_RIGHT" maxHeight="20.0" maxWidth="100.0" minHeight="20.0" minWidth="100.0" prefHeight="20.0" prefWidth="100.0">
                            <children>
-                              <Label text="0" />
+                              <Label fx:id="activeShipStatScoutPowerValue" text="0" />
                            </children>
                            <opaqueInsets>
                               <Insets />

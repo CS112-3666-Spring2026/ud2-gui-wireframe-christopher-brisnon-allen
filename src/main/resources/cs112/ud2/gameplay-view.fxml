@@ -1,53 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="cs112.ud2.controller.GameplayController"
-      spacing="15"
-      alignment="CENTER"
-      prefWidth="500"
-      styleClass="gameplay-view">
+<VBox fx:id="gameplayPanel" alignment="CENTER" prefWidth="500" spacing="15" styleClass="gameplay-view" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs112.ud2.controller.GameplayController">
 
     <padding>
-        <Insets top="30" bottom="30" left="30" right="30"/>
+        <Insets bottom="30" left="30" right="30" top="30" />
     </padding>
 
-    <Label text="Gameplay / Debug View" styleClass="title-label" />
-
-    <HBox spacing="20">
-        <!-- Left Column -->
-        <VBox spacing="12">
-            <Label text="Fleet Management" styleClass="section-label"/>
-        </VBox>
-
-        <!-- Right Column -->
-        <VBox spacing="12">
-            <Label text="Ship Actions" styleClass="section-label"/>
-        </VBox>
-    </HBox>
+    <Label fx:id="gameplayPanelLabel" styleClass="title-label" text="Gameplay / Debug View" />
 
     <HBox spacing="20">
         <VBox spacing="12">
-            <Label text="Resources" styleClass="section-label"/>
-            <Button text="+100 Minerals" onAction="#addMinerals" prefWidth="180"/>
-            <Button text="+100 Salvage" onAction="#addSalvage" prefWidth="180"/>
-            <Button text="+100 Energy" onAction="#addEnergy" prefWidth="180"/>
-            <Button text="+200 Credits" onAction="#addCredits" prefWidth="180"/>
+            <Label styleClass="section-label" text="Resources" />
+            <Button onAction="#addMinerals" prefWidth="180" text="+100 Minerals" />
+            <Button onAction="#addSalvage" prefWidth="180" text="+100 Salvage" />
+            <Button onAction="#addEnergy" prefWidth="180" text="+100 Energy" />
+            <Button onAction="#addCredits" prefWidth="180" text="+200 Credits" />
         </VBox>
 
         <VBox spacing="12">
-            <Label text=" " styleClass="section-label"/>
-            <Button text="-50 Minerals" onAction="#subtractMinerals" prefWidth="180"/>
-            <Button text="-50 Salvage" onAction="#subtractSalvage" prefWidth="180"/>
-            <Button text="-50 Energy" onAction="#subtractEnergy" prefWidth="180"/>
-            <Button text="-50 Credits" onAction="#subtractCredits" prefWidth="180"/>
+            <Label styleClass="section-label" text=" " />
+            <Button onAction="#subtractMinerals" prefWidth="180" text="-50 Minerals" />
+            <Button onAction="#subtractSalvage" prefWidth="180" text="-50 Salvage" />
+            <Button onAction="#subtractEnergy" prefWidth="180" text="-50 Energy" />
+            <Button onAction="#subtractCredits" prefWidth="180" text="-50 Credits" />
         </VBox>
     </HBox>
 
-    <Separator/>
+    <Separator />
+
+    <HBox fx:id="fleetManagementButtons" spacing="20">
+        <VBox fx:id="fleetManagementButtonsContainer" spacing="12">
+            <Label fx:id="fleetManagementButtonsLabel" styleClass="section-label" text="Fleet Management" />
+            <Button onAction="#addShip" prefWidth="180" text="+Add Ship" />
+            <Button onAction="#removeSelectedShip" prefWidth="180" text="-Remove Ship" />
+            <Button onAction="#printFleet" prefWidth="180" text="Print Fleet" />
+        </VBox>
+    </HBox>
+   <Separator prefWidth="200.0" />
+
+     <!-- Right Column -->
+     <VBox spacing="12">
+         <Label styleClass="section-label" text="Ship Actions" />
+     </VBox>
 
 </VBox>

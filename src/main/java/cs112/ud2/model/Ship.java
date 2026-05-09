@@ -10,6 +10,7 @@ import java.util.Objects;
  */
 public class Ship {
 
+    // Main-related stats
     private String name;
     private int hull;
     private MissionStatus status;
@@ -19,7 +20,7 @@ public class Ship {
     private int salvagePower;
     private int scoutPower;
 
-    // Combat-related stat
+    // Combat-related stats
     private int combatPower;
 
     /********** CONSTRUCTORS **********/

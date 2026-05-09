@@ -46,6 +46,7 @@ public class GameManager {
     public boolean addShip(Ship ship) {
         return player.addShip(ship);
     }
+    public boolean removeShip(Ship ship) { return player.removeShip(ship); }
 
     /********** RESOURCES **********/
     public void addMinerals(int amount) { player.getResources().addMinerals(amount); }

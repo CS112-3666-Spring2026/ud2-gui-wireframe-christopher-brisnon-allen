@@ -1,6 +1,7 @@
 package cs112.ud2.controller;
 
 import cs112.ud2.manager.GameManager;
+import cs112.ud2.model.Ship;
 import javafx.fxml.FXML;
 /**
  * GamePlayController.java
@@ -10,6 +11,8 @@ public class GameplayController {
 
     private GameManager gameManager;
     private ResourceController resourceController;
+    private FleetListController fleetListController;
+    private Ship currentlySelectedShip;
 
     public void setGameManager(GameManager gameManager) {
         this.gameManager = gameManager;
@@ -19,12 +22,30 @@ public class GameplayController {
         this.resourceController = resourceController;
     }
 
+    public void setFleetListController(FleetListController fleetListController) {
+        this.fleetListController = fleetListController;
+    }
+
+    public void setCurrentlySelectedShip(Ship ship) {
+        this.currentlySelectedShip = ship;
+    }
+
+    private void refreshAll() {
+        refreshResources();
+        refreshFleet();
+    }
+
     private void refreshResources() {
         if (resourceController != null) {
             resourceController.updateAllResources();
         }
     }
 
+    private void refreshFleet() {
+        if (fleetListController != null && gameManager != null) {
+            fleetListController.setFleet(gameManager.getPlayer().getShips());
+        }
+    }
     /********** RESOURCES BUTTONS **********/
 
     @FXML
@@ -86,6 +107,46 @@ public class GameplayController {
         if (gameManager != null) {
             gameManager.spendCredits(50);
             refreshResources();
+        }
+    }
+    /********** ADD/REMOVE SHIP BUTTONS **********/
+    @FXML
+    public void addShip() {
+        if (gameManager != null && gameManager.canAddShip()) {
+            Ship newShip = new Ship(
+                    "Ship " + (gameManager.getPlayer().getShips().size() + 1),
+                    130, 45, 25, 20, 15
+            );
+            gameManager.addShip(newShip);
+            System.out.println("Added new ship");
+            refreshAll();
+        } else {
+            System.out.println("Cannot add ship - Fleet is full");
+        }
+    }
+    @FXML
+    public void removeSelectedShip() {
+        if (gameManager != null && currentlySelectedShip != null) {
+            boolean removed = gameManager.removeShip(currentlySelectedShip);
+
+            if (removed) {
+                System.out.println("Removed ship: " + currentlySelectedShip.getName());
+                currentlySelectedShip = null;
+                refreshAll();
+            } else {
+                System.out.println("Failed to remove ship");
+            }
+        } else {
+            System.out.println("No ship selected to remove");
+        }
+    }
+
+    @FXML
+    public void printFleet() {
+        if (gameManager != null) {
+            System.out.println("=== Current Fleet ===");
+            gameManager.getPlayer().getShips().forEach(System.out::println);
+            System.out.println("Total ships: " + gameManager.getPlayer().getShips().size());
         }
     }
 }

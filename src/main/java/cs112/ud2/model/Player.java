@@ -65,6 +65,10 @@ public class Player {
         return true;
     }
 
+    public boolean removeShip(Ship ship) {
+        return ships.remove(ship);
+    }
+
     public void addExperience(int amount) {
         if (amount > 0) {
             experience += amount;

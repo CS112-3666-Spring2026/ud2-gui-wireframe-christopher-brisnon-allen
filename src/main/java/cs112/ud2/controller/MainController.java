@@ -4,34 +4,30 @@ import cs112.ud2.manager.GameManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.StackPane;
+
 import java.io.IOException;
-/**
- * MainController.java
- *    - FleetListController
- *    - ActiveShipController
- *    - GameplayController
- *    - ResourceController
- *      -> Calls initializeData() which sets up GameManager
- * Loads panels, connects controllers, initializes game, primarily
- * button logic
- */
+
 public class MainController {
 
     @FXML
     private StackPane mainContentArea;
+
     @FXML
-    private GameplayController gameplayController;
+    private FleetListController fleetListViewController;
+
+    @FXML
+    private ActiveShipController activeShipViewController;
+
     @FXML
     private ResourceController resourceViewController;
+
+    private GameplayController gameplayController;
 
     @FXML
     public void initialize() throws IOException {
         loadGameplayView();
     }
 
-    /**
-     * Loads the gameplay-view into the main content area
-     */
     private void loadGameplayView() throws IOException {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/cs112/ud2/gameplay-view.fxml")
@@ -40,26 +36,39 @@ public class MainController {
             javafx.scene.Parent gameplayView = loader.load();
             gameplayController = loader.getController();
 
-            // Add the view to the screen
             mainContentArea.getChildren().clear();
             mainContentArea.getChildren().add(gameplayView);
     }
 
-    /**
-     * Called after UI is shown to initialize game data
-     */
     public void initializeData() {
         GameManager gm = GameManager.getInstance();
 
-        // Connect GameplayController
+        // Connect Fleet List to Active Ship Panel
+        if (fleetListViewController != null && activeShipViewController != null) {
+            fleetListViewController.setActiveShipController(activeShipViewController);
+            fleetListViewController.setFleet(gm.getPlayer().getShips());
+        }
+
+        // Set initial active ship
+        if (activeShipViewController != null && !gm.getPlayer().getShips().isEmpty()) {
+            activeShipViewController.updateWithShip(gm.getPlayer().getShips().get(0));
+        }
+
+        // Connect ActiveShipController to GameplayController
+        if (activeShipViewController != null && gameplayController != null) {
+            activeShipViewController.setGameplayController(gameplayController);
+        }
+
+        // Connect Resource Bar
+        if (resourceViewController != null) {
+            resourceViewController.setGameManager(gm);
+        }
+
+        // Connect Gameplay Controller
         if (gameplayController != null) {
             gameplayController.setGameManager(gm);
             gameplayController.setResourceController(resourceViewController);
-        }
-
-        // Connect ResourceController
-        if (resourceViewController != null) {
-            resourceViewController.setGameManager(gm);
+            gameplayController.setFleetListController(fleetListViewController);
         }
     }
 }

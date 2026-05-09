@@ -4,14 +4,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="fleetListView"
-      prefHeight="490.0"
-      prefWidth="35.0"
-      xmlns="http://javafx.com/javafx/17.0.12"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="cs112.ud2.controller.FleetListController">
+<VBox fx:id="fleetListPanel" prefHeight="490.0" prefWidth="35.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs112.ud2.controller.FleetListController">
    <children>
-      <GridPane maxHeight="490.0" maxWidth="35.0" minHeight="490.0" minWidth="35.0" prefHeight="490.0" prefWidth="35.0" vgap="5.0">
+      <GridPane fx:id="fleetListGrid" maxHeight="490.0" maxWidth="35.0" minHeight="490.0" minWidth="35.0" prefHeight="490.0" prefWidth="35.0" vgap="5.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
